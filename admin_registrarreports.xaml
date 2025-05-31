@@ -1,0 +1,90 @@
+﻿<Window x:Class="SocietyManagmentSystem.admin_registrarreports"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:SocietyManagmentSystem"
+        mc:Ignorable="d"
+        Title="Registrar Reports" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#FFF0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="135"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Sidebar -->
+        <Rectangle Grid.Column="0" Fill="White" Stroke="LightGray" StrokeThickness="0,0,1,0"/>
+        <StackPanel Grid.Column="0" Margin="5">
+            <Image HorizontalAlignment="Center" Height="80" Margin="10,10,10,20" VerticalAlignment="Top" Width="80" Source="/societylogo.jpg" Stretch="Fill"/>
+
+            <Button Content="Dashboard" Height="30" Margin="5,10" Click="Button_Click" Background="White" Foreground="Black" FontFamily="Calibri" BorderBrush="LightGray" FontSize="13"/>
+            <Button Content="Resident Reports" Height="30" Margin="5,5" Click="Button_Click_1" Background="#FF45A9EA" Foreground="White" BorderBrush="#FF45A9EA" FontFamily="Calibri" FontSize="13"/>
+            <Button Content="Finance Reports" Height="30" Margin="5,5" Click="Button_Click_2" Background="White" Foreground="Black" BorderBrush="LightGray" FontFamily="Calibri" FontSize="13"/>
+
+            <Button Content="Logout" Height="30" Margin="5,100,5,5" VerticalAlignment="Bottom" Click="LogoutButton_Click" FontFamily="Calibri" FontSize="14" Background="#FFD9534F" Foreground="White" BorderBrush="#FFD9534F"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" BorderBrush="#FF45A9EA" BorderThickness="0,0,0,2" VerticalAlignment="Center" Margin="0,0,0,5">
+                <TextBlock Text="Resident Reports" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontFamily="Calibri" FontWeight="Bold" Foreground="#FF003366"/>
+            </Border>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,0,5">
+                <Button x:Name="RefreshButton" Content="Refresh Data" Width="100" Height="28" Margin="0,0,10,0" Click="RefreshButton_Click" Background="#FF5BC0DE" Foreground="White" BorderBrush="#FF46B8DA" FontFamily="Calibri" FontSize="12"/>
+                <TextBlock Text="Total Residents:" VerticalAlignment="Center" Margin="0,0,5,0" FontFamily="Calibri" FontSize="12" FontWeight="SemiBold"/>
+                <TextBlock Name="TotalCountTextBlock" Text="0" VerticalAlignment="Center" FontFamily="Calibri" FontWeight="Bold" Foreground="#FF45A9EA" FontSize="12"/>
+            </StackPanel>
+
+            <DataGrid x:Name="ResidentDataGrid" Grid.Row="2" Margin="0,5,0,0"
+                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+                      GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                      Background="White" AlternatingRowBackground="#FFEFEFEF"
+                      FontFamily="Calibri" FontSize="11">
+
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#FF45A9EA"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="5"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ResidentId}" Width="60"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1.5*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="1.5*"/>
+                    <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="90"/>
+                    <DataGridTextColumn Header="House Address" Binding="{Binding HouseAddress}" Width="1.5*"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="80">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="Active">
+                                        <Setter Property="Foreground" Value="Green"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="Inactive">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Move-in Date" Binding="{Binding MoveInDate, StringFormat=dd/MM/yyyy}" Width="90"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

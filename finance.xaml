@@ -1,0 +1,54 @@
+﻿<Window x:Class="SocietyManagmentSystem.finance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:SocietyManagmentSystem"
+        mc:Ignorable="d"
+        Title="Finance" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#FFF0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="135"/>
+            <!-- Sidebar -->
+            <ColumnDefinition Width="*"/>
+            <!-- Main Content -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Rectangle Grid.Column="0" Fill="White" Stroke="LightGray" StrokeThickness="0,0,1,0"/>
+        <StackPanel Grid.Column="0" Margin="5">
+            <Image HorizontalAlignment="Center" Height="80" Margin="10,10,10,20" VerticalAlignment="Top" Width="80" Source="/societylogo.jpg" Stretch="Fill"/>
+
+            <Button Content="Dashboard" Height="30" Margin="5,10" Click="Button_Click"
+                    Background="White" Foreground="Black" FontFamily="Calibri" BorderBrush="LightGray" FontSize="13"/>
+            <Button Content="Manage Payments" Height="30" Margin="5,5" Click="Button_Click_1"
+                    Background="White" Foreground="Black" BorderBrush="LightGray" FontFamily="Calibri" FontSize="13"/>
+            <Button Content="Payment Reports" Height="30" Margin="5,5" Click="Button_Click_2"
+                    Background="White" Foreground="Black" BorderBrush="LightGray" FontFamily="Calibri" FontSize="13"/>
+            <!-- Indicates current page -->
+
+            <Button Content="Logout" Height="30" Margin="5,100,5,5" VerticalAlignment="Bottom" Click="LogoutButton_Click"
+                    FontFamily="Calibri" FontSize="14" Background="#FFD9534F" Foreground="White" BorderBrush="#FFD9534F"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" BorderBrush="#FF45A9EA" BorderThickness="0,0,0,2" VerticalAlignment="Center" Margin="0,0,0,5">
+                <TextBlock Text="Finance Manager" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                           FontSize="20" FontFamily="Calibri" FontWeight="Bold" Foreground="#FF003366"/>
+            </Border>
+
+            <!-- Main Content Placeholder -->
+            <Grid Grid.Row="1" Background="White" Margin="0">
+                <!-- Add your finance-related UI elements here -->
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

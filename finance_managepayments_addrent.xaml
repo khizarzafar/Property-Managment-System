@@ -1,0 +1,76 @@
+﻿<Window x:Class="SocietyManagmentSystem.finance_managepayments_addrent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+        Title="Add New Rent" Height="526" Width="550"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Grid Background="#FFF0F0F0" Margin="20">
+        <StackPanel>
+            <TextBlock Text="Add New Rent Record" FontSize="20" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <Border Background="LightBlue" CornerRadius="5" Padding="10" Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Quick Actions:" FontWeight="Bold" Margin="0,0,0,5"/>
+                    <Button Content="Generate Rent for All Residents (Upcoming Cycle)"
+                            Background="#17A2B8" Foreground="White" Padding="10,5"
+                            Click="GenerateBulkRent_Click" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="Or Add Individual Rent Record:" FontWeight="Bold" Margin="0,0,0,15"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Select Resident:" FontWeight="Bold" Grid.Row="0" Grid.Column="0"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox x:Name="ResidentComboBox" DisplayMemberPath="DisplayText"
+                          SelectedValuePath="resident_id" Grid.Row="0" Grid.Column="1"
+                          Margin="0,5,0,15" Height="25"/>
+
+                <TextBlock Text="Month/Year:" FontWeight="Bold" Grid.Row="1" Grid.Column="0"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,5,0,15">
+                    <TextBox x:Name="MonthYearTextBox" Height="25"/>
+                    <TextBlock Text="Format: YYYY-MM (e.g., 2025-05)" FontSize="10"
+                               Foreground="Gray" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <TextBlock Text="Amount:" FontWeight="Bold" Grid.Row="2" Grid.Column="0"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,5,0,15">
+                    <TextBox x:Name="AmountTextBox" Height="25" Text="500.00"/>
+                    <TextBlock Text="Enter amount in decimal format" FontSize="10"
+                               Foreground="Gray" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <TextBlock Text="Due Date:" FontWeight="Bold" Grid.Row="3" Grid.Column="0"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <DatePicker x:Name="DueDatePicker" Grid.Row="3" Grid.Column="1"
+                            Margin="0,5,0,15" Height="25"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1"
+                            HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Button Content="Save and Add Another" Background="#28A745" Foreground="White"
+                            Padding="15,8" Margin="0,0,10,0" Click="Save_Click"/>
+                    <Button Content="Save and Close" Background="#007BFF" Foreground="White"
+                            Padding="15,8" Margin="0,0,10,0" Click="Save_Click" Tag="close"/>
+                    <Button Content="Cancel" Background="#6C757D" Foreground="White"
+                            Padding="15,8" Click="Cancel_Click"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

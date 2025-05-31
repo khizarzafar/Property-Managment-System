@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icon-right.png" />
+    <None Remove="societylogo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icon-right.png" />
+    <Resource Include="societylogo.jpg" />
+  </ItemGroup>
+
+</Project>
